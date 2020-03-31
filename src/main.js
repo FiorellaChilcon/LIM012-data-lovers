@@ -124,13 +124,14 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
     main.appendChild(cartaHTML(resultado));
   });
   const divCoincidencias = document.getElementById('coincidencias');
-  inputBuscar.addEventListener('keyup', () => {
+  inputBuscar.addEventListener('keyup', (event) => {
+    const regex = new RegExp(`^${inputBuscar.value}`, 'gi');
     let matches = nombreAtletas.filter((nombre) => {
       divCoincidencias.innerHTML = '';
-      const regex = new RegExp(`^${inputBuscar.value}`, 'gi');
       return nombre.match(regex);
     });
-    if (inputBuscar.value.length === 0) {
+    if (inputBuscar.value.length === 0 || nombreAtletas.some(
+        (nombre) => nombre == inputBuscar.value)) {
       matches = [];
       divCoincidencias.classList.add('ocultar');
     } else {
@@ -145,7 +146,13 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
           inputBuscar.value = match;
         });
       });
-    }
+    };
+    if (event.keyCode === 13) {
+      const resultado = atletas2016.filter((atleta) =>
+        (atleta.name.toLowerCase() == inputBuscar.value.toLowerCase()));
+      main.innerHTML = '';
+      main.appendChild(cartaHTML(resultado));
+    };
   });
   // grafico de barras
   const estadisticas = estadistica(atletas2016, 'Gold', listaPaises);
@@ -186,18 +193,6 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
     },
   });
 })();
-const boton = document.querySelector('#botonMenu');
-const mostrarMenu = () => {
-  const menu = document.querySelector('#contenidoMenu');
-  if (menu.classList.contains('ocultar-menu')) {
-    menu.classList.remove('ocultar-menu');
-    menu.classList.add('mostrar-menu');
-  } else {
-    menu.classList.remove('mostrar-menu');
-    menu.classList.add('ocultar-menu');
-  }
-};
-boton.addEventListener('click', mostrarMenu);
 const botongrafico = document.getElementById('botongrafico');
 const contenedorGrafico = document.getElementById('contenedorgrafico');
 botongrafico.addEventListener('click', () => {
@@ -207,7 +202,6 @@ botongrafico.addEventListener('click', () => {
 const cerrargrafico = document.getElementById('cerrargrafico');
 cerrargrafico.addEventListener('click', () => {
   contenedorGrafico.classList.add('graficoclass');
-  contenedorGrafico.classList.remove('graficostyle');
 });
 const contenidoMenu = document.getElementById('contenidoMenu');
 const botonMenu = document.getElementById('botonMenu');
@@ -217,4 +211,12 @@ botonMenu.addEventListener('click', () => {
 const cerrarMenu = document.getElementById('cerrarMenu');
 cerrarMenu.addEventListener('click', () => {
   contenidoMenu.classList.add('ocultarMenu');
+});
+const contenido = document.getElementById('contenido');
+contenido.addEventListener('click', () => {
+  contenidoMenu.classList.add('ocultarMenu');
+});
+const divCoincidencias = document.getElementById('coincidencias');
+contenidoMenu.addEventListener('click', () => {
+  divCoincidencias.classList.add('ocultar');
 });

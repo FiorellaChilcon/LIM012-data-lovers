@@ -49,7 +49,7 @@ body {
 #main {
     border: solid 0.3vh  rgb(87, 87, 87);
     border-radius: 2vh;
-    overflow: scroll;
+    overflow: auto;
     width: 60vw;
     height: 71vh; 
     padding-top: 0vh;
@@ -59,7 +59,6 @@ body {
 }
 #main::-webkit-scrollbar-thumb {
     width: 1vh;
-    height: 10vh;
     background-color: rgba(12, 209, 12);
     border-radius: 1vh;
 }
@@ -185,10 +184,15 @@ li{
 }
 .verMas, #verMenos{
     font-size: 5vh;
+    border: solid 0.2vh rgb(82, 81, 81);
     border-radius: 5vh;
     width: 7vh;
-    background: white;
+    background: rgb(252, 248, 248);
     padding: 0vw;
+}
+.verMas:hover, #verMenos:hover{
+    background: rgb(105, 233, 137);
+    border: none;
 }
 img{
     width: 5em;
@@ -201,10 +205,25 @@ img{
     width: 40vh;
     max-height: 30vh;
     overflow: auto;
-    background-color: white;
+    background-color: rgba(250, 248, 248, 0.938);
 }
-.graficoclass{
-    display: none;
+#coincidencias::-webkit-scrollbar {
+    width: 1vh;
+}
+#coincidencias::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.911);  
+  }
+#coincidencias::-webkit-scrollbar-thumb {
+    width: 1vh;
+    background-color: rgb(30, 135, 255);
+    border-radius: 1vh;
+}
+#coincidencias p{
+    /* border: solid red; */
+    margin-bottom: 1vh;
+    padding-left: 1vw;
+    background-color:  rgba(255, 255, 255, 0.911);
+
 }
 .graficostyle{
     position: absolute;
@@ -216,18 +235,22 @@ img{
     width: 100vw;
     height: 100vh;
 }
+.graficoclass{
+    display: none;
+}
 #botongrafico{
     background: none;
-    padding: 0vw;
     width: 4.5vw;
     height: 10vh;
     border: solid 0.3vh  rgb(57, 58, 58);
     font-size: 5vh;
     border-radius: 5vh;
-    padding: 2vh;
 }
-#botongrafico:hover i{
+#botongrafico:hover{
     color: rgb(226, 224, 224);
+    width: 5.1vw;
+    height: 11vh;
+    font-size: 6vh;
 }
 .grafico{
     width: 50vw;
@@ -265,15 +288,18 @@ img{
 @media (min-width: 320px) and (max-width: 700px) {
     #botonMenu{
         display: flex;
-    }
-    .ocultarMenu{
-    display: none;
+        cursor: pointer;
     }
     .menuClass{
         position: absolute;
         width: 80vw;
         background-color: rgb(49, 180, 26);
+        transition: 0.5s;
     }
+    .ocultarMenu{
+        width: 0;
+        overflow: hidden;
+        }
     #cerrarMenu{
         display: flex;
         background: none;
@@ -301,7 +327,7 @@ img{
         width: 60vw;
     }
     .buscador {
-        width: 80vw
+        width: 80vw;
     }
     #ordenador {
        width: 30vw;
@@ -332,15 +358,18 @@ img{
     #botonMenu{
         display: flex;
         font-size: 2vh;
-    }
-    .ocultarMenu{
-    display: none;
+        cursor: pointer;
     }
     .menuClass{
         position: absolute;
         width: 80vw;
         background-color: rgb(49, 180, 26);
+        transition: 0.5s;
     }
+    .ocultarMenu{
+        width: 0;
+        overflow: hidden;
+     }
     #cerrarMenu{
         display: flex;
         background: none;
