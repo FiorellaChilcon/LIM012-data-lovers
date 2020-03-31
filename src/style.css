@@ -49,11 +49,7 @@ body {
 #main {
     border: solid 0.3vh  rgb(87, 87, 87);
     border-radius: 2vh;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: auto;
+    overflow: scroll;
     width: 60vw;
     height: 71vh; 
     padding-top: 0vh;
@@ -75,6 +71,7 @@ article {
     padding: 1vh;
     color: black;
     background: rgb(248, 248, 255, 0.3);
+    margin: auto;
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
