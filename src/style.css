@@ -138,9 +138,7 @@ h1 {
     border: solid 0.2vh rgb(57, 58, 58);
     border-radius: 1vh;
     width: 10vw;
-    min-width: 8vh;
     height: 5vh;
-    min-height: 2vh;
     font-size: 3vh;
     margin-top: 3vh;
     margin-bottom: 3vh;
@@ -314,6 +312,10 @@ img{
     #botongrafico{
         width: 18vw;
     }
+    #botongrafico:hover{
+        width: 18vw;
+        height: 10vh;
+    }
     #contenido {
        width: 100vw;
     }
@@ -382,7 +384,11 @@ img{
         color: rgb(216, 216, 216);
     }
     #botongrafico{
-        width: 18vw;
+        width: 15vw;
+    }
+    #botongrafico:hover{
+        width: 15vw;
+        height: 10vh;
     }
     #contenido {
        width: 100vw;
