@@ -27,7 +27,7 @@ body {
 }
 .buscador div:first-child{
     text-align: center;
- 
+
 }
 #search{
     background-color: rgb(255, 255, 255);
@@ -200,7 +200,7 @@ li{
     border: none;
 }
 img{
-    width: 5em;
+    width: 20vh;
     height: auto;
     margin-bottom: 2vh;
 }
@@ -341,7 +341,8 @@ input[type = checkbox]{
     background-color: rgb(92, 88, 88);
 }
 .bordernight{
-    border-color: rgba(26, 230, 77, 0.726);
+    border-color: rgba(24, 199, 68, 0.726);
+    /* border: solid 0.3vh rgba(24, 199, 68, 0.726); */
     color: rgb(233, 230, 230);
 }
 @media (min-width: 320px) and (max-width: 700px) {
@@ -354,6 +355,27 @@ input[type = checkbox]{
         width: 80vw;
         background-color: rgb(49, 180, 26);
         transition: 0.5s;
+    }
+    h1{
+        font-size: 4.3vh;
+    }
+    .lema{
+        font-size: 2vh;
+    }
+    .ordenador {
+        height: 3.5vh;
+        font-size: 2vh;
+    }
+    img{
+        width: 12vh;
+    }
+    article p{
+        font-size: 2.3vh;
+    }
+    .verMas, #verMenos{
+        font-size: 3vh;
+        width: 4vh;
+        height: 4vh;
     }
     .ocultarMenu{
         width: 0;
@@ -409,7 +431,7 @@ input[type = checkbox]{
         width: 60vw;
     }
     #coincidencias{
-        width: 34vh;
+        width: 32vh;
         margin-top: 9vw;
     }
     .grafico{
@@ -429,6 +451,9 @@ input[type = checkbox]{
     }
     .on{
         margin-left: 3.5vh;
+    }
+    .menunight{
+        background: rgba(33, 106, 148, 0.986) !important;
     }
 }
 @media (min-width: 700px) and (max-width: 1024px) {
@@ -498,7 +523,7 @@ input[type = checkbox]{
         width: 60vw;
     }
     #coincidencias{
-        width: 45vh;
+        width: 43vh;
         margin-top: 7vw;
     }
     .grafico{
@@ -513,5 +538,8 @@ input[type = checkbox]{
     }
     .switchlabel{
         width: 5vw;
+    }
+    .menunight{
+        background: rgba(33, 106, 148, 0.986) !important;
     }
 }

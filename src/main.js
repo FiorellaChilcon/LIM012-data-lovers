@@ -1,4 +1,4 @@
-import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
+import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
 // import data from './data/atletas/atletas.js';
 (async () => {
   const response = await fetch('./data/atletas/atletas.json');
@@ -86,8 +86,8 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
   };
   const listaDisciplinasRepetidas = listaDisciplinasFuncion();
   const listaDisciplinas = listaDisciplinasRepetidas.filter(
-    (elemento, indice, array) =>
-      (array.indexOf(elemento) === indice));
+      (elemento, indice, array) =>
+        (array.indexOf(elemento) === indice));
   // funcionalidad select disciplinas
   const selectDisciplina = document.querySelector('#disciplinas');
   (() => {
@@ -132,7 +132,7 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
       return nombre.match(regex);
     });
     if (inputBuscar.value.length === 0 || nombreAtletas.some(
-      (nombre) => nombre == inputBuscar.value)) {
+        (nombre) => nombre == inputBuscar.value)) {
       matches = [];
       divCoincidencias.classList.add('ocultar');
     } else {
@@ -223,6 +223,7 @@ const divCoincidencias = document.getElementById('coincidencias');
 contenidoMenu.addEventListener('click', () => {
   divCoincidencias.classList.add('ocultar');
 });
+// modo noche
 const modonoche = document.getElementById('modonoche');
 const switchlabel = document.querySelector('.switchlabel');
 const labelparent = document.querySelector('header div');
@@ -232,7 +233,7 @@ const h2 = document.querySelector('.lema');
 const menu = document.getElementById('contenidoMenu');
 const menuh2 = document.querySelector('.menuh2');
 const select = document.querySelectorAll('select');
-const option = document.querySelectorAll('option');
+const option = document.getElementsByTagName('option');
 const medallas= document.getElementById('medallasfiltro');
 const medallasp = document.querySelector('.medallasfiltro p:first-child');
 const searcher= document.getElementById('searcher');
@@ -246,7 +247,7 @@ modonoche.addEventListener('click', () => {
     h1.classList.toggle('textnight');
     menu.classList.toggle('menunight');
     h2.classList.toggle('colornight');
-    menuh2.classList.toggle('textnight');
+    menuh2.classList.toggle('bordernight');
     Array.prototype.slice.call(select).forEach((element) => {
       element.classList.toggle('bordernight');
     });
@@ -256,6 +257,8 @@ modonoche.addEventListener('click', () => {
     medallas.classList.toggle('bordernight');
     medallasp.classList.toggle('textnight');
     searcher.classList.toggle('colornight');
-    botongrafico.classList.toggle('colornight');
+    botonMenu.classList.toggle('textnight');
+    botongrafico.classList.toggle('bordernight');
+    cerrarMenu.classList.toggle('textnight');
   };
 });
