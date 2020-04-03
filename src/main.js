@@ -1,4 +1,4 @@
-import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
+import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
 // import data from './data/atletas/atletas.js';
 (async () => {
   const response = await fetch('./data/atletas/atletas.json');
@@ -86,8 +86,8 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
   };
   const listaDisciplinasRepetidas = listaDisciplinasFuncion();
   const listaDisciplinas = listaDisciplinasRepetidas.filter(
-      (elemento, indice, array) =>
-        (array.indexOf(elemento) === indice));
+    (elemento, indice, array) =>
+      (array.indexOf(elemento) === indice));
   // funcionalidad select disciplinas
   const selectDisciplina = document.querySelector('#disciplinas');
   (() => {
@@ -114,6 +114,7 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
       main.appendChild(cartaHTML(resultado));
     });
   });
+  //  funcionalidad buscador
   const nombreAtletas = atletas2016.map((atleta) => (atleta.name));
   const inputBuscar = document.getElementById('search');
   const buscador = document.getElementById('searcher');
@@ -131,7 +132,7 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
       return nombre.match(regex);
     });
     if (inputBuscar.value.length === 0 || nombreAtletas.some(
-        (nombre) => nombre == inputBuscar.value)) {
+      (nombre) => nombre == inputBuscar.value)) {
       matches = [];
       divCoincidencias.classList.add('ocultar');
     } else {
@@ -144,6 +145,7 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
         opcion.addEventListener('click', () => {
           divCoincidencias.classList.add('ocultar');
           inputBuscar.value = match;
+          inputBuscar.focus();
         });
       });
     };
@@ -152,6 +154,7 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
         (atleta.name.toLowerCase() == inputBuscar.value.toLowerCase()));
       main.innerHTML = '';
       main.appendChild(cartaHTML(resultado));
+      divCoincidencias.classList.add('ocultar');
     };
   });
   // grafico de barras
@@ -219,4 +222,40 @@ contenido.addEventListener('click', () => {
 const divCoincidencias = document.getElementById('coincidencias');
 contenidoMenu.addEventListener('click', () => {
   divCoincidencias.classList.add('ocultar');
+});
+const modonoche = document.getElementById('modonoche');
+const switchlabel = document.querySelector('.switchlabel');
+const labelparent = document.querySelector('header div');
+const main = document.getElementById('main');
+const h1 = document.querySelector('h1');
+const h2 = document.querySelector('.lema');
+const menu = document.getElementById('contenidoMenu');
+const menuh2 = document.querySelector('.menuh2');
+const select = document.querySelectorAll('select');
+const option = document.querySelectorAll('option');
+const medallas= document.getElementById('medallasfiltro');
+const medallasp = document.querySelector('.medallasfiltro p:first-child');
+const searcher= document.getElementById('searcher');
+modonoche.addEventListener('click', () => {
+  if (modonoche.checked == true) {
+    switchlabel.classList.toggle('on');
+    switchlabel.classList.toggle('switchcolor');
+    labelparent.classList.toggle('labelparent');
+    main.classList.toggle('fondonight');
+    contenido.classList.toggle('fondonight');
+    h1.classList.toggle('textnight');
+    menu.classList.toggle('menunight');
+    h2.classList.toggle('colornight');
+    menuh2.classList.toggle('textnight');
+    Array.prototype.slice.call(select).forEach((element) => {
+      element.classList.toggle('bordernight');
+    });
+    Array.prototype.slice.call(option).forEach((element) => {
+      element.classList.toggle('optionight');
+    });
+    medallas.classList.toggle('bordernight');
+    medallasp.classList.toggle('textnight');
+    searcher.classList.toggle('colornight');
+    botongrafico.classList.toggle('colornight');
+  };
 });

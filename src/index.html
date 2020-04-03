@@ -17,34 +17,38 @@
       <div class="buscador">
         <div>
           <input type="text" placeholder="Search" id="search">
-        <button type="submit" id="searcher"><i class="fa fa-search"></i></button>
+        <button type="submit" id="searcher" class="searcher"><i class="fa fa-search"></i></button>
         </div>
         <div id="coincidencias"></div>
       </div> 
       <!-- Filtro por medallas  -->
-      <div id="medallasfiltro">
+      <div id="medallasfiltro" class="medallasfiltro">
         <p>MEDALLAS</p>
           <label><input type="radio" name="medallas" value="Gold">Oro</label>
           <label><input type="radio" name="medallas" value="Silver">Plata</label>
           <label><input type="radio" name="medallas" value="Bronze">Bronce</label>
       </div>
       <!-- Filtro por deportes -->
-        <select id="disciplinas" name="disciplinas">
+        <select id="disciplinas" class="disciplinas" name="disciplinas">
           <option value="">Disciplinas</option>
         </select>
         <!-- Filtro por paises -->
-        <select id="paises" name="paises">
+        <select id="paises"  class="paises" name="paises">
           <option value="">Países</option>
         </select>
-        <button id="botongrafico"><i class="fas fa-medal"></i></button>
+        <button id="botongrafico" class="botongrafico"><i class="fas fa-medal"></i></button>
     </div>
     <div id="contenido">
       <header>
+        <div> 
+          <input type="checkbox" id="modonoche">
+          <label for="modonoche" class="switchlabel"></label>
+        </div>
         <h1>WIKIATLETAS</h1>
         <h2 class="lema">Encuentra los atletas de Rio 2016</h2>
       </header>
         <!-- Boton de ordenar -->
-      <select id="ordenador">
+      <select id="ordenador" class="ordenador">
         <option class="option" value="">Ordenar</option>
         <option class="option" value="A-Z">A-Z</option>
         <option class="option" value="Z-A">Z-A</option>

@@ -31,22 +31,23 @@ body {
 }
 #search{
     background-color: rgb(255, 255, 255);
-    border: solid 0.2vh rgb(78, 78, 78);
+    border: solid 0.2vh rgb(90, 90, 90);
     width: 18vw;
     height: 4vh;
     font-size: 3vh;
     border-radius: 0.5vh;
 }
-#searcher{
+.searcher{
     background: none;
     font-size: 3vh;
     border: none;
     position: absolute;
+    color: rgb(79, 79, 80);
 }
 #searcher:hover i{
     color: rgb(255, 255, 255);
 }
-#main {
+main {
     border: solid 0.3vh  rgb(87, 87, 87);
     border-radius: 2vh;
     overflow: auto;
@@ -64,12 +65,11 @@ body {
 }
 article {
     font-size: 3vh;
-    border: 0.2vh solid rgb(90, 90, 90);
+    border: 0.2vh solid rgb(12, 12, 12);
     width: 30vw;
     border-radius: 1vh;
     padding: 1vh;
-    color: black;
-    background: rgb(248, 248, 255, 0.3);
+    background: rgba(255, 255, 255, 0.3);
     margin: auto;
     margin-top: 2vh;
     display: flex;
@@ -79,13 +79,15 @@ article {
 }
 article p{
     text-align: center;
+    color: rgb(46, 45, 45);
 }
 #contenido {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 72vw;
+    width: 74vw;
+    height: 100vh;
     /* border: solid rgb(250, 2, 2);  */
 }
 input[type = radio] {
@@ -93,9 +95,9 @@ input[type = radio] {
     height: 4.5vh;
     vertical-align: middle;
 }
-#medallasfiltro{
+.medallasfiltro{
     list-style: none;
-    border: solid 0.2vh black; 
+    border: solid 0.2vh rgb(44, 44, 44); 
      width: 15vw;
      height: 33vh;
      display: flex;
@@ -103,16 +105,17 @@ input[type = radio] {
      justify-content: center;
      border-radius: 1vh;
 }
-#medallasfiltro label {
+.medallasfiltro label {
     /* border: solid red;  */
     text-align: left;
     vertical-align: middle;
     height: 4.8vh;
     margin: 1vh;
 }
-#medallasfiltro p:first-child {
+.medallasfiltro p:first-child {
     /* border: solid red;  */
     text-align: center;
+    color: rgb(31, 30, 30);
 }
 .menuClass {
     /* border: solid red; */
@@ -134,10 +137,12 @@ h1 {
     color: rgb(20, 207, 20);
     text-align: center;
 }
-#ordenador {
+.ordenador {
     border: solid 0.2vh rgb(57, 58, 58);
     border-radius: 1vh;
-    width: 10vw;
+    background: rgba(0, 0, 0, 0);
+    color: rgb(59, 59, 59);
+    width: 8vw;
     height: 5vh;
     font-size: 3vh;
     margin-top: 3vh;
@@ -164,15 +169,16 @@ li{
     font-size: 3vh;
 }
 .menuh2{
-    border-bottom: 0.2vh solid black;
+    border-bottom: 0.2vh solid rgb(94, 93, 93);
     font-size: 4vh;
+    color: rgb(94, 91, 91);
 }
-#disciplinas, #paises {
+.disciplinas, .paises {
     font-size: 3vh;
     width: 13vw;
     height: 6vh;
     margin-top: 2vh;
-    border: solid 0.2vh black;
+    border: solid 0.2vh rgb(37, 37, 37);
     border-radius: 1vh;
     font-family: 'Lato', sans-serif;
     background: rgb(0,0,0,0);
@@ -187,6 +193,7 @@ li{
     width: 7vh;
     background: rgb(252, 248, 248);
     padding: 0vw;
+    color: rgb(80, 80, 82);
 }
 .verMas:hover, #verMenos:hover{
     background: rgb(105, 233, 137);
@@ -221,7 +228,6 @@ img{
     margin-bottom: 1vh;
     padding-left: 1vw;
     background-color:  rgba(255, 255, 255, 0.911);
-
 }
 .graficostyle{
     position: absolute;
@@ -236,13 +242,14 @@ img{
 .graficoclass{
     display: none;
 }
-#botongrafico{
+.botongrafico{
     background: none;
     width: 4.5vw;
     height: 10vh;
     border: solid 0.3vh  rgb(57, 58, 58);
     font-size: 5vh;
     border-radius: 5vh;
+    color: rgb(66, 66, 66);
 }
 #botongrafico:hover{
     color: rgb(226, 224, 224);
@@ -283,6 +290,60 @@ img{
 #cerrarMenu{
     display: none;
 }
+header div{
+    border-radius: 6vh;
+    background-color: rgb(221, 218, 14);
+    position: absolute;
+    right: 8vw;
+    width: 4vw;
+    height: 4.4vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+input[type = checkbox]{
+    display: none;
+}
+.switchlabel{
+    border: none;
+    border-radius: 5vh;
+    transition: 0.5s;
+    background-color: rgb(77, 76, 76);
+    width: 1.8vw;
+    height: 4vh;
+    cursor: pointer;
+}
+.on{
+    margin-left: 4.8vh;
+}
+.labelparent{
+    background-color: rgb(77, 76, 76);
+}
+.switchcolor{
+    background-color: rgb(221, 218, 14);
+}
+.fondonight{
+    background: rgba(83, 83, 83, 0.774);
+}
+.colornight{
+    color: rgb(11, 189, 11);
+}
+.menunight{
+    background: rgba(33, 106, 148, 0.877) !important;
+}
+.textnight{
+    color: rgb(233, 230, 230) !important;
+}
+.optionight{
+    background-color: rgb(92, 88, 88);
+}
+.bordernight{
+    border-color: rgba(26, 230, 77, 0.726);
+    color: rgb(233, 230, 230);
+}
 @media (min-width: 320px) and (max-width: 700px) {
     #botonMenu{
         display: flex;
@@ -302,9 +363,11 @@ img{
         display: flex;
         background: none;
         border: none;
-        font-size: 7vh;
+        font-size: 5vh;
         color: rgba(99, 99, 99, 0.877);
         align-self: flex-end;
+        position: absolute;
+        top: 1vh;
     }
     #cerrarMenu:hover i {
         color: rgb(216, 216, 216);
@@ -326,7 +389,7 @@ img{
          width: 50vw;
     }
     #search{
-        width: 60vw;
+        width: 58vw;
     }
     .buscador {
         width: 80vw;
@@ -355,6 +418,18 @@ img{
     #cerrargrafico{
         margin-left: 80vw;
     }
+    header div{
+        width: 11vw;
+        height: 3.5vh;
+        right: 2vw;
+    }
+    .switchlabel{
+        width: 5vw;
+        height: 3vh;
+    }
+    .on{
+        margin-left: 3.5vh;
+    }
 }
 @media (min-width: 700px) and (max-width: 1024px) {
     #botonMenu{
@@ -376,9 +451,11 @@ img{
         display: flex;
         background: none;
         border: none;
-        font-size: 7vh;
+        font-size: 5vh;
         color: rgba(99, 99, 99, 0.877);
         align-self: flex-end;
+        position: absolute;
+        top: 1vh;
     }
     #cerrarMenu:hover i {
         color: rgb(216, 216, 216);
@@ -401,7 +478,7 @@ img{
          width: 50vw;
     }
     #search{
-        width: 60vw;
+        width: 58vw;
     }
     .buscador {
         width: 80vw
@@ -429,5 +506,12 @@ img{
     }
     #cerrargrafico{
         margin-left: 80vw;
+    }
+    header div{
+        width: 11vw;
+        right: 3vw;
+    }
+    .switchlabel{
+        width: 5vw;
     }
 }
