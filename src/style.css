@@ -19,6 +19,12 @@ body {
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+.campoVacio{
+    font-size: 2vh;
+    color: rgba(221, 27, 27, 0.938);
+    position: absolute;
+    top: 11.5vh;
+}
 .buscador {
     /* border: solid red; */
     display: flex;
@@ -27,7 +33,6 @@ body {
 }
 .buscador div:first-child{
     text-align: center;
-
 }
 #search{
     background-color: rgb(255, 255, 255);
@@ -332,7 +337,7 @@ input[type = checkbox]{
     color: rgb(11, 189, 11);
 }
 .menunight{
-    background: rgba(33, 106, 148, 0.877) !important;
+    background: rgba(11, 64, 95, 0.75) !important;
 }
 .textnight{
     color: rgb(233, 230, 230) !important;
@@ -353,7 +358,7 @@ input[type = checkbox]{
     .menuClass{
         position: absolute;
         width: 80vw;
-        background-color: rgb(49, 180, 26);
+        background-color: rgb(98, 202, 21);
         transition: 0.5s;
     }
     h1{
@@ -453,7 +458,7 @@ input[type = checkbox]{
         margin-left: 3.5vh;
     }
     .menunight{
-        background: rgba(33, 106, 148, 0.986) !important;
+        background: rgb(11, 64, 95) !important;
     }
 }
 @media (min-width: 700px) and (max-width: 1024px) {
@@ -465,7 +470,7 @@ input[type = checkbox]{
     .menuClass{
         position: absolute;
         width: 80vw;
-        background-color: rgb(49, 180, 26);
+        background-color: rgb(98, 202, 21);
         transition: 0.5s;
     }
     .ocultarMenu{
@@ -540,6 +545,6 @@ input[type = checkbox]{
         width: 5vw;
     }
     .menunight{
-        background: rgba(33, 106, 148, 0.986) !important;
+        background: rgb(11, 64, 95)!important;
     }
 }

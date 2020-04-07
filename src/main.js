@@ -1,4 +1,4 @@
-import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
+import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
 // import data from './data/atletas/atletas.js';
 (async () => {
   const response = await fetch('./data/atletas/atletas.json');
@@ -86,8 +86,8 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
   };
   const listaDisciplinasRepetidas = listaDisciplinasFuncion();
   const listaDisciplinas = listaDisciplinasRepetidas.filter(
-      (elemento, indice, array) =>
-        (array.indexOf(elemento) === indice));
+    (elemento, indice, array) =>
+      (array.indexOf(elemento) === indice));
   // funcionalidad select disciplinas
   const selectDisciplina = document.querySelector('#disciplinas');
   (() => {
@@ -118,11 +118,23 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
   const nombreAtletas = atletas2016.map((atleta) => (atleta.name));
   const inputBuscar = document.getElementById('search');
   const buscador = document.getElementById('searcher');
+  const menu = document.querySelector('.menuClass');
+  const campoVacio = document.querySelector('.campoVacio');
   buscador.addEventListener('click', () => {
-    const resultado = atletas2016.filter((atleta) =>
-      (atleta.name.toLowerCase() == inputBuscar.value.toLowerCase()));
-    main.innerHTML = '';
-    main.appendChild(cartaHTML(resultado));
+    if (inputBuscar.value.length !== 0) {
+      campoVacio.textContent = ' ';
+      const resultado = atletas2016.filter((atleta) =>
+        (atleta.name.toLowerCase() == inputBuscar.value.toLowerCase()));
+      if (resultado.length !== 0) {
+        main.innerHTML = '';
+        main.appendChild(cartaHTML(resultado));
+        menu.classList.add('ocultarMenu');
+      } else {
+        campoVacio.textContent = 'SIN COINCIDENCIAS';
+      }
+    } else {
+      campoVacio.textContent = 'CAMPO VACIO';
+    };
   });
   const divCoincidencias = document.getElementById('coincidencias');
   inputBuscar.addEventListener('keyup', (event) => {
@@ -131,11 +143,16 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
       divCoincidencias.innerHTML = '';
       return nombre.match(regex);
     });
+    console.log(matches);
     if (inputBuscar.value.length === 0 || nombreAtletas.some(
         (nombre) => nombre == inputBuscar.value)) {
+      campoVacio.textContent = ' ';
       matches = [];
       divCoincidencias.classList.add('ocultar');
+    } else if (matches.length == 0) {
+      campoVacio.textContent = 'SIN COINCIDENCIAS';
     } else {
+      campoVacio.textContent = ' ';
       divCoincidencias.classList.remove('ocultar');
       matches.forEach((match) => {
         const opcion = document.createElement('p');
@@ -234,9 +251,9 @@ const menu = document.getElementById('contenidoMenu');
 const menuh2 = document.querySelector('.menuh2');
 const select = document.querySelectorAll('select');
 const option = document.getElementsByTagName('option');
-const medallas= document.getElementById('medallasfiltro');
+const medallas = document.getElementById('medallasfiltro');
 const medallasp = document.querySelector('.medallasfiltro p:first-child');
-const searcher= document.getElementById('searcher');
+const searcher = document.getElementById('searcher');
 modonoche.addEventListener('click', () => {
   if (modonoche.checked == true) {
     switchlabel.classList.toggle('on');
