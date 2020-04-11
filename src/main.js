@@ -1,9 +1,8 @@
-import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
+import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
 // import data from './data/atletas/atletas.js';
 (async () => {
   const response = await fetch('./data/atletas/atletas.json');
   const data = await response.json();
-  console.log(data);
   // Filtrar por disciplinas
   const arrDataAtletas = data.atletas;
   const arrDisciplinas = arrDataAtletas.filter((atleta) =>
@@ -27,9 +26,9 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
   })();
   const usuarios = topAtletas.map((indice) => atletas2016[indice]);
   const main = document.getElementsByTagName('main')[0];
-  main.appendChild(cartaHTML(usuarios));
+  main.innerHTML = cartaHTML(usuarios);
   // obtener id de los elementos mostrados
-  const usuariosMostrados = (() => {
+  const usuariosMostrados = () => {
     const elementosId = [];
     const resultado = [];
     const articles = document.getElementsByTagName('article');
@@ -44,13 +43,13 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
       });
     });
     return resultado;
-  })();
+  };
   // funcionalidad boton ordenar
   const selector = document.querySelector('#ordenador');
   selector.addEventListener('change', (event) => {
-    main.innerHTML = '';
-    ordenar(usuariosMostrados, event.target.value);
-    main.appendChild(cartaHTML(usuariosMostrados));
+    const usuarios = usuariosMostrados();
+    ordenar(usuarios, event.target.value);
+    main.innerHTML = cartaHTML(usuarios);
   });
   // Lista de países en select
   const listaPaisesRepetidos = atletas2016.map((paises) => paises.team);
@@ -69,8 +68,7 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
   // funcionalidad select pais
   selectPais.addEventListener('change', (event) => {
     const resultado = filtroData(atletas2016, 'team', event.target.value);
-    main.innerHTML = '';
-    main.appendChild(cartaHTML(resultado));
+    main.innerHTML = cartaHTML(resultado);
   });
   // Lista de diciplinas en select
   const listaDisciplinasArr = atletas2016.map((atleta) =>
@@ -86,8 +84,8 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
   };
   const listaDisciplinasRepetidas = listaDisciplinasFuncion();
   const listaDisciplinas = listaDisciplinasRepetidas.filter(
-    (elemento, indice, array) =>
-      (array.indexOf(elemento) === indice));
+      (elemento, indice, array) =>
+        (array.indexOf(elemento) === indice));
   // funcionalidad select disciplinas
   const selectDisciplina = document.querySelector('#disciplinas');
   (() => {
@@ -102,16 +100,14 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
   selectDisciplina.addEventListener('change', (event) => {
     // eslint-disable-next-line max-len
     const resultado = filtroData(atletas2016, 'disciplinas', event.target.value);
-    main.innerHTML = '';
-    main.appendChild(cartaHTML(resultado));
+    main.innerHTML = cartaHTML(resultado);
   });
   //  funcionalidad botones medallas
   const botonesMedalla = document.getElementsByName('medallas');
   botonesMedalla.forEach((boton) => {
     boton.addEventListener('click', () => {
       const resultado = filtroData(atletas2016, 'medalla', boton.value);
-      main.innerHTML = '';
-      main.appendChild(cartaHTML(resultado));
+      main.innerHTML = cartaHTML(resultado);
     });
   });
   //  funcionalidad buscador
@@ -120,14 +116,13 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
   const buscador = document.getElementById('searcher');
   const menu = document.querySelector('.menuClass');
   const campoVacio = document.querySelector('.campoVacio');
-  buscador.addEventListener('click', () => {
+  const funcionBuscar = () => {
     if (inputBuscar.value.length !== 0) {
       campoVacio.textContent = ' ';
       const resultado = atletas2016.filter((atleta) =>
         (atleta.name.toLowerCase() == inputBuscar.value.toLowerCase()));
       if (resultado.length !== 0) {
-        main.innerHTML = '';
-        main.appendChild(cartaHTML(resultado));
+        main.innerHTML = cartaHTML(resultado);
         menu.classList.add('ocultarMenu');
       } else {
         campoVacio.textContent = 'SIN COINCIDENCIAS';
@@ -135,7 +130,8 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
     } else {
       campoVacio.textContent = 'CAMPO VACIO';
     };
-  });
+  };
+  buscador.addEventListener('click', funcionBuscar);
   const divCoincidencias = document.getElementById('coincidencias');
   inputBuscar.addEventListener('keyup', (event) => {
     const regex = new RegExp(`^${inputBuscar.value}`, 'gi');
@@ -143,7 +139,6 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
       divCoincidencias.innerHTML = '';
       return nombre.match(regex);
     });
-    console.log(matches);
     if (inputBuscar.value.length === 0 || nombreAtletas.some(
         (nombre) => nombre == inputBuscar.value)) {
       campoVacio.textContent = ' ';
@@ -167,11 +162,7 @@ import { cartaHTML, ordenar, filtroData, estadistica } from './data.js';
       });
     };
     if (event.keyCode === 13) {
-      const resultado = atletas2016.filter((atleta) =>
-        (atleta.name.toLowerCase() == inputBuscar.value.toLowerCase()));
-      main.innerHTML = '';
-      main.appendChild(cartaHTML(resultado));
-      divCoincidencias.classList.add('ocultar');
+      funcionBuscar();
     };
   });
   // grafico de barras
@@ -235,6 +226,7 @@ cerrarMenu.addEventListener('click', () => {
 const contenido = document.getElementById('contenido');
 contenido.addEventListener('click', () => {
   contenidoMenu.classList.add('ocultarMenu');
+  divCoincidencias.classList.add('ocultar');
 });
 const divCoincidencias = document.getElementById('coincidencias');
 contenidoMenu.addEventListener('click', () => {

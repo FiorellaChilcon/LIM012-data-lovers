@@ -1,77 +1,81 @@
 const cartaHTML = (arr) => {
-  const mainDiv = document.createElement('div');
-  arr.forEach((element, index) => {
+  let article = '';
+  arr.forEach((element) => {
     const infokeys = Object.keys(element);
-    const article = document.createElement('article');
-    article.setAttribute('id', element.id);
-    const img = document.createElement('img');
-    img.setAttribute('src', 'imagenes/foto.png');
-    img.setAttribute('alt', 'foto');
-    const vistaPrevia = document.createElement('div');
-    const nombre = document.createElement('p');
-    const textoNombre = document.createTextNode(element.name);
-    nombre.appendChild(textoNombre);
-    const disciplina = document.createElement('p');
-    const textoDisciplina = document.createTextNode(
-        element.disciplinas[0].disciplina);
-    disciplina.appendChild(textoDisciplina);
-    vistaPrevia.appendChild(nombre);
-    vistaPrevia.appendChild(disciplina);
-    const verMas = document.createElement('button');
-    verMas.setAttribute('class', 'verMas');
-    const textoVermas = document.createTextNode('+');
-    verMas.appendChild(textoVermas);
-    const divInfo = document.createElement('div');
-    divInfo.id = `divInfo${index}`;
-    divInfo.className = 'ocultar';
-    const verMenos = document.createElement('button');
-    verMenos.setAttribute('class', 'ocultar');
-    verMenos.setAttribute('id', 'verMenos');
-    const textoVerMenos = document.createTextNode('-');
-    verMenos.appendChild(textoVerMenos);
+    const vistaPrevia = `
+    <div id="vistaPrevia">
+      <p>${element.name}</p>
+      <p>${element.disciplinas[0].disciplina}</p>
+    </div>`;
+    let info = '';
+    let img = '';
+    if (element.gender === 'F') {
+      img += '<img src="imagenes/mujer.png" alt="foto" class="imgmujer">';
+    } else {
+      img += '<img src="imagenes/hombre.png" alt="foto">';
+    };
     for (let i = 0; i < infokeys.length; i++) {
       const infoValues = element[infokeys[i]];
       if (Array.isArray(infoValues)) {
         infoValues.forEach((element) => {
           const elementKeys = Object.keys(element);
           for (let i = 0; i < elementKeys.length; i++) {
-            const datos = document.createElement('p');
-            const textoDatos = document.createTextNode(
-                `${elementKeys[i]}: ${element[elementKeys[i]]}`);
-            datos.appendChild(textoDatos);
-            divInfo.appendChild(datos);
+            switch (elementKeys[i]) {
+              case 'medalla':
+                info += `<p>
+                <i class="fas fa-medal"></i> ${element[elementKeys[i]]} 
+                </p>`;
+                break;
+              case 'temporada':
+                info += `<p>
+                <i class="fas fa-cloud-sun"></i> 
+                ${element[elementKeys[i]]} 
+                </p>`;
+                break;
+              default:
+                info += `<p>
+                <span>${elementKeys[i]}:</span>
+                 ${element[elementKeys[i]]} 
+                 </p>`;
+            }
           }
         });
       } else {
-        const datos = document.createElement('p');
-        const textoDatos = document.createTextNode(
-            `${infokeys[i]}: ${infoValues}`);
-        datos.appendChild(textoDatos);
-        divInfo.appendChild(datos);
-      }
-    }
-    article.appendChild(img);
-    article.appendChild(vistaPrevia);
-    article.appendChild(verMas);
-    article.appendChild(divInfo);
-    article.appendChild(verMenos);
-    mainDiv.appendChild(article);
-    verMas.addEventListener('click', () => {
-      divInfo.classList.remove('ocultar');
-      vistaPrevia.classList.add('ocultar');
-      verMas.classList.add('ocultar');
-      verMenos.classList.remove('ocultar');
-    },
-    );
-    verMenos.addEventListener('click', () => {
-      divInfo.classList.add('ocultar');
-      vistaPrevia.classList.remove('ocultar');
-      verMas.classList.remove('ocultar');
-      verMenos.classList.add('ocultar');
-    },
-    );
-  });
-  return mainDiv;
+        switch (infokeys[i]) {
+          case 'gender':
+            if (element[infokeys[i]] === 'F') {
+              info += `<p>${infokeys[i]}: <i class="fas fa-venus"></i> </p>`;
+            } else {
+              info += `<p>${infokeys[i]} <i class="fas fa-mars"></i> </p>`;
+            }
+            break;
+          case 'height':
+            info += `<p>
+            <i class="fas fa-ruler-vertical"></i> 
+            ${infoValues} 
+            </p>`;
+            break;
+          case 'weight':
+            info += `<p><i class="fas fa-weight"></i> ${infoValues} </p>`;
+            break;
+          default:
+            info += `<p><span>${infokeys[i]}:</span> ${infoValues} </p>`;
+        };
+      };
+    };
+    article +=`<article class="flip-card" id=${element.id}>
+    <div class="flip-card-inner">
+    <div class="flip-card-front">
+       ${img}
+       ${vistaPrevia}
+    </div>
+    <div class="flip-card-back">
+       ${info}
+    </div>
+    </article>`;
+  },
+  );
+  return article;
 };
 const ordenar = (data, orden) => {
   const resultado = data.sort((previo, siguiente) => {

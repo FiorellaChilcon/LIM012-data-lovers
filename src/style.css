@@ -26,7 +26,6 @@ body {
     top: 11.5vh;
 }
 .buscador {
-    /* border: solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,6 +40,7 @@ body {
     height: 4vh;
     font-size: 3vh;
     border-radius: 0.5vh;
+    padding: 0.2vh 0 0.2vh 0.5vh;
 }
 .searcher{
     background: none;
@@ -48,17 +48,22 @@ body {
     border: none;
     position: absolute;
     color: rgb(79, 79, 80);
+    margin-top:0.6vh;
 }
 #searcher:hover i{
     color: rgb(255, 255, 255);
 }
 main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
     border: solid 0.3vh  rgb(87, 87, 87);
     border-radius: 2vh;
     overflow: auto;
     width: 60vw;
     height: 71vh; 
-    padding-top: 0vh;
+    /* padding-top: 0vh; */
 } 
 #main::-webkit-scrollbar {
     width: 1vh;
@@ -68,23 +73,71 @@ main {
     background-color: rgba(12, 209, 12);
     border-radius: 1vh;
 }
-article {
-    font-size: 3vh;
-    border: 0.2vh solid rgb(12, 12, 12);
-    width: 30vw;
-    border-radius: 1vh;
-    padding: 1vh;
-    background: rgba(255, 255, 255, 0.3);
-    margin: auto;
+.flip-card {
+    background-color: transparent;
     margin-top: 2vh;
+    width: 25vw;
+    height: 45vh;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    border-radius: 1vh;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #bbb;
+    color: black;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .flip-card-front p:last-child{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .flip-card-back {
+    background-color: #2e5d7cc7;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  .flip-card-back  p {
+      border-bottom: solid 1px rgb(156, 154, 154);
+      padding-top: 2vh;
+      padding-bottom: 2vh;
+      cursor: pointer;
+  }
+  .flip-card-back  p:hover {
+    background-color: #2e5d7cef;
 }
-article p{
-    text-align: center;
-    color: rgb(46, 45, 45);
+.flip-card-back  p:hover i,
+.flip-card-back  p:hover span {
+    color: #11e02def;
+}
+.flip-card-back p::first-letter{
+    text-transform: uppercase;
 }
 #contenido {
     display: flex;
@@ -111,19 +164,20 @@ input[type = radio] {
      border-radius: 1vh;
 }
 .medallasfiltro label {
-    /* border: solid red;  */
     text-align: left;
     vertical-align: middle;
     height: 4.8vh;
     margin: 1vh;
 }
+.medallasfiltro label:hover{
+    color:rgb(238, 234, 234);
+    letter-spacing: 2px;
+}
 .medallasfiltro p:first-child {
-    /* border: solid red;  */
     text-align: center;
     color: rgb(31, 30, 30);
 }
 .menuClass {
-    /* border: solid red; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -141,6 +195,14 @@ h1 {
     letter-spacing: 0.3vh;
     color: rgb(20, 207, 20);
     text-align: center;
+    transition: 0.5s;
+}
+h1:hover{
+    /* position: absolute; */
+    font-weight: normal;
+    font-size: 7vh;
+    letter-spacing: 5px;
+    color: rgb(119, 99, 189);
 }
 .ordenador {
     border: solid 0.2vh rgb(57, 58, 58);
@@ -160,13 +222,17 @@ h1 {
 }
 .lema {
     text-align: center;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 3vh;
     margin-top: 2vh;
     color: rgb(8, 128, 8);
 }
+.lema:hover{
+    color: rgb(12, 197, 12);
+}
 #menu p:first-child{
     margin-top: 5vh;
-    font-size: 3.5vh;
+    font-size: 4vh;
     text-align: center;
 }
 li{
@@ -177,6 +243,7 @@ li{
     border-bottom: 0.2vh solid rgb(94, 93, 93);
     font-size: 4vh;
     color: rgb(94, 91, 91);
+    font-family: 'Times New Roman', Times, serif;
 }
 .disciplinas, .paises {
     font-size: 3vh;
@@ -188,26 +255,23 @@ li{
     font-family: 'Lato', sans-serif;
     background: rgb(0,0,0,0);
 }
+.disciplinas:hover, .paises:hover {
+    width: 14vw;
+    height: 7vh;
+    border-color: rgb(238, 234, 234);
+}
 .ocultar{
     display: none;
 }
-.verMas, #verMenos{
-    font-size: 5vh;
-    border: solid 0.2vh rgb(82, 81, 81);
-    border-radius: 5vh;
-    width: 7vh;
-    background: rgb(252, 248, 248);
-    padding: 0vw;
-    color: rgb(80, 80, 82);
-}
-.verMas:hover, #verMenos:hover{
-    background: rgb(105, 233, 137);
-    border: none;
-}
 img{
-    width: 20vh;
+    width: 10.3vw;
+    height: 10.3vh;
     height: auto;
     margin-bottom: 2vh;
+}
+.imgmujer{
+    width: 12vw;
+    height: 25vh;
 }
 #coincidencias{
     margin-top: 2.5vw;
@@ -217,21 +281,30 @@ img{
     overflow: auto;
     background-color: rgba(250, 248, 248, 0.938);
 }
-#coincidencias::-webkit-scrollbar {
+#coincidencias::-webkit-scrollbar, 
+.flip-card-back::-webkit-scrollbar {
     width: 1vh;
 }
-#coincidencias::-webkit-scrollbar-track {
+#coincidencias::-webkit-scrollbar-track{
     background-color: rgba(255, 255, 255, 0.911);  
   }
-#coincidencias::-webkit-scrollbar-thumb {
+.flip-card-back::-webkit-scrollbar-track{
+    background: none;  
+  }
+#coincidencias::-webkit-scrollbar-thumb,
+.flip-card-back::-webkit-scrollbar-thumb {
     width: 1vh;
     background-color: rgb(30, 135, 255);
     border-radius: 1vh;
 }
+.flip-card-back::-webkit-scrollbar-thumb {
+    background-color: rgb(88, 87, 87);
+}
 #coincidencias p{
     /* border: solid red; */
-    margin-bottom: 1vh;
-    padding-left: 1vw;
+    font-size: 2.5vh;
+    margin-bottom: 0.5vh;
+    padding: 1.2vh 0 1.2vh 1vw;
     background-color:  rgba(255, 255, 255, 0.911);
 }
 .graficostyle{
@@ -258,7 +331,8 @@ img{
 }
 #botongrafico:hover{
     color: rgb(226, 224, 224);
-    width: 5.1vw;
+    border-radius: 6vh;
+    width: 5.2vw;
     height: 11vh;
     font-size: 6vh;
 }
@@ -321,6 +395,9 @@ input[type = checkbox]{
     height: 4vh;
     cursor: pointer;
 }
+.switchlabel:hover{
+    background-color: rgb(141, 141, 141);
+}
 .on{
     margin-left: 4.8vh;
 }
@@ -360,6 +437,10 @@ input[type = checkbox]{
         width: 80vw;
         background-color: rgb(98, 202, 21);
         transition: 0.5s;
+        z-index: 1;
+    }
+    .graficostyle{
+        z-index: 2;
     }
     h1{
         font-size: 4.3vh;
@@ -372,15 +453,21 @@ input[type = checkbox]{
         font-size: 2vh;
     }
     img{
-        width: 12vh;
+        width: 25vw;
+        height: 25vh;
+        height: auto;
+        margin-bottom: 2vh;
     }
-    article p{
+    .imgmujer{
+        width: 28vw;
+        height: 15vh;
+    }
+    .flip-card {
+        width: 60vw;
+        height: 25vh;
+    }
+    .flip-card  p{
         font-size: 2.3vh;
-    }
-    .verMas, #verMenos{
-        font-size: 3vh;
-        width: 4vh;
-        height: 4vh;
     }
     .ocultarMenu{
         width: 0;
@@ -427,14 +514,10 @@ input[type = checkbox]{
     input[type = radio] {
         width: 7vw;
         height: 7vh;
-
     }
     #main {
         width: 80vw;
     } 
-    article {
-        width: 60vw;
-    }
     #coincidencias{
         width: 32vh;
         margin-top: 9vw;
@@ -469,9 +552,33 @@ input[type = checkbox]{
     }
     .menuClass{
         position: absolute;
-        width: 80vw;
+        width: 75vw;
         background-color: rgb(98, 202, 21);
         transition: 0.5s;
+        z-index: 1;
+    }
+    input[type = radio] {
+        width: 2vw;
+        height: 2vh;
+        vertical-align: middle;
+    }
+    .flip-card {
+        width: 38vw;
+        height: 35vh;
+    }
+    .flip-card  p{
+        font-size: 2vh;
+    }
+    img{
+        width: 20vw;
+        height: 15vh;
+    }
+    .imgmujer{
+        width: 23vw;
+        height: 17vh;
+    }
+    .graficostyle{
+        z-index: 2;
     }
     .ocultarMenu{
         width: 0;
@@ -508,7 +615,7 @@ input[type = checkbox]{
          width: 50vw;
     }
     #search{
-        width: 58vw;
+        width: 54vw;
     }
     .buscador {
         width: 80vw
@@ -519,14 +626,10 @@ input[type = checkbox]{
     input[type = radio] {
         width: 7vw;
         height: 7vh;
-
     }
     #main {
-        width: 80vw;
+        width: 95vw;
     } 
-    article {
-        width: 60vw;
-    }
     #coincidencias{
         width: 43vh;
         margin-top: 7vw;
