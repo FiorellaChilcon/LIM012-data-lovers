@@ -448,23 +448,23 @@ input[type = checkbox]{
         z-index: 1;
     }
     .flex{
-        width: 200px;
+        width: 220px;
     }
     .menuh2{
         font-size: 18px;
     }
-    .ocultarMenu{
-        width: 0;
-        overflow: hidden;
-        }
     .graficostyle{
         z-index: 2;
     }
     h1{
-        font-size: 20px;
+        font-size: 28px;
+    }
+    h1:hover{
+        font-size: 23px;
+        letter-spacing: 4px;
     }
     .lema{
-        font-size: 16px;
+        font-size: 17px;
     }
     .imgmujer, img {
         width: 140px;
@@ -542,7 +542,7 @@ input[type = checkbox]{
         height: calc(100vh - 150px);
     } 
     #coincidencias{
-        width: 160px;
+        width: 180px;
         top: 108px;
     }
     .grafico{

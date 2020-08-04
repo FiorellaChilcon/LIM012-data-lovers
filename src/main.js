@@ -123,7 +123,7 @@ import {cartaHTML, ordenar, filtroData, estadistica} from './data.js';
         (atleta.name.toLowerCase() == inputBuscar.value.toLowerCase()));
       if (resultado.length !== 0) {
         main.innerHTML = cartaHTML(resultado);
-        menu.classList.add('ocultarMenu');
+        menu.classList.remove('flex');
       } else {
         campoVacio.textContent = 'SIN COINCIDENCIAS';
       }
@@ -225,7 +225,7 @@ cerrarMenu.addEventListener('click', () => {
 });
 const contenido = document.getElementById('contenido');
 contenido.addEventListener('click', () => {
-  contenidoMenu.classList.add('ocultarMenu');
+  contenidoMenu.classList.remove('flex');
   divCoincidencias.classList.add('ocultar');
 });
 const divCoincidencias = document.getElementById('coincidencias');
