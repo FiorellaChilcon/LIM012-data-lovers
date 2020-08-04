@@ -126,6 +126,7 @@ main {
     background: rgba(255, 255, 255, 0.3);
   }
   .flip-card-front p:last-child{
+      margin: 0 5px;
     font-family: 'Times New Roman', Times, serif;
   }
   
@@ -328,6 +329,9 @@ img{
     display: none;
 }
 .botongrafico{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 30px;
     background: none;
     width: 60px;
@@ -448,6 +452,7 @@ input[type = checkbox]{
         z-index: 1;
     }
     .flex{
+        overflow: auto;
         width: 220px;
     }
     .menuh2{
@@ -471,8 +476,8 @@ input[type = checkbox]{
         height: 140px;
     }
     .flip-card {
-        width: 300px;
-        height: 280px;
+        width: 280px;
+        height: 300px;
     }
     .flip-card  p{
         font-size: 2.3vh;
@@ -538,7 +543,7 @@ input[type = checkbox]{
         font-size: 15px;
     }
     #main {
-        width: calc(100vw - 40px);
+        width: 98%;
         height: calc(100vh - 150px);
     } 
     #coincidencias{
