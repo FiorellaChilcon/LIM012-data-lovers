@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Lovers</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
@@ -10,15 +10,17 @@
 <body>
   <div id="contenedorGeneral">
     <button id="botonMenu"><i class="fas fa-bars fa-2x"></i></button>
-    <div id="contenidoMenu" class="menuClass ocultarMenu">
+    <div id="contenidoMenu" class="menuClass">
       <button id="cerrarMenu"><i class="fas fa-times"></i></button>
       <!-- Buscador por nombre de atleta -->
       <h2 class="menuh2">CLASIFICAR</h2>
       <div class="buscador">
         <div>
           <p class="campoVacio"></p>
-          <input type="text" placeholder="Search" id="search">
-          <button type="submit" id="searcher" class="searcher"><i class="fa fa-search"></i></button>
+          <div class="input-button">
+            <input type="text" placeholder="Search" id="search">
+            <button type="submit" id="searcher" class="searcher"><i class="fa fa-search"></i></button>
+          </div>
         </div>
         <div id="coincidencias"></div>
       </div> 

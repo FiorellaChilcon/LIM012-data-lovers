@@ -217,11 +217,11 @@ cerrargrafico.addEventListener('click', () => {
 const contenidoMenu = document.getElementById('contenidoMenu');
 const botonMenu = document.getElementById('botonMenu');
 botonMenu.addEventListener('click', () => {
-  contenidoMenu.classList.toggle('ocultarMenu');
+  contenidoMenu.classList.add('flex');
 });
 const cerrarMenu = document.getElementById('cerrarMenu');
 cerrarMenu.addEventListener('click', () => {
-  contenidoMenu.classList.add('ocultarMenu');
+  contenidoMenu.classList.remove('flex');
 });
 const contenido = document.getElementById('contenido');
 contenido.addEventListener('click', () => {
